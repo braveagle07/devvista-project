@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="DevVista — Build and launch your professional portfolio in minutes.">
+<title>DevVista | Portfolio Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo"><img src="logo.jpg" alt="DevVista" style="height:28px;width:28px;border-radius:6px;object-fit:cover;flex-shrink:0"> Dev<span>Vista</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#templates">Templates</a>
+      <a href="#features">Features</a>
+      <div id="authNav"></div>
+      <a href="#templates" class="btn-cta">Start Building <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <button id="mBtn" aria-label="menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <span class="eyebrow"><i class="fas fa-bolt"></i> BUILD · CUSTOMIZE · LAUNCH</span>
+    <h1>Your Portfolio.<br><em>Built in Minutes.</em></h1>
+    <p>Pick a template, fill in your details, and launch a stunning portfolio — no coding required. Three professional designs for every type of professional.</p>
+    <div class="hero-cta-row">
+      <a href="#templates" class="btn-primary">Choose a Template <i class="fas fa-arrow-down"></i></a>
+      <a href="#features" class="btn-outline">How It Works</a>
+    </div>
+    <div class="hero-badges">
+      <span><i class="fas fa-mouse-pointer"></i> No Coding</span>
+      <span><i class="fas fa-bolt"></i> Instant Preview</span>
+      <span><i class="fas fa-cloud"></i> Cloud-Ready</span>
+      <span><i class="fas fa-mobile-alt"></i> Responsive</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="wrap">
+    <div class="sec-label">HOW IT WORKS</div>
+    <h2 class="sec-title">Three Steps to Done</h2>
+    <div class="how-grid">
+
+      <div class="how-step rv">
+        <div class="how-step-num">01</div>
+        <div class="how-icon-ring"><i class="fas fa-th-large"></i></div>
+        <h3>Pick a Template</h3>
+        <p>Choose from three professional designs tailored to your profession and style.</p>
+      </div>
+
+      <div class="how-connector" aria-hidden="true">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+
+      <div class="how-step rv">
+        <div class="how-step-num">02</div>
+        <div class="how-icon-ring"><i class="fas fa-keyboard"></i></div>
+        <h3>Enter Your Details</h3>
+        <p>Fill in your name, skills, projects, and contact info using our guided builder.</p>
+      </div>
+
+      <div class="how-connector" aria-hidden="true">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+
+      <div class="how-step rv">
+        <div class="how-step-num">03</div>
+        <div class="how-icon-ring"><i class="fas fa-rocket"></i></div>
+        <h3>Launch Your Portfolio</h3>
+        <p>Preview your portfolio instantly and deploy to any hosting provider with a single upload.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEMPLATES -->
+<section id="templates">
+  <div class="wrap">
+    <div class="sec-label">CHOOSE YOUR TEMPLATE</div>
+    <h2 class="sec-title">Three Templates. One Purpose.</h2>
+    <p class="sec-sub">Each template is purpose-built for a specific professional identity. Preview any template, then use the builder to make it yours.</p>
+    <div class="tpl-grid" id="tplGrid"></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-label">WHAT YOU GET</div>
+    <h2 class="sec-title">Everything Included</h2>
+    <div class="feat-grid" id="featGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap footer-inner">
+    <div class="ft-brand">
+      <span class="logo"><img src="logo.jpg" alt="DevVista" style="height:24px;width:24px;border-radius:5px;object-fit:cover;flex-shrink:0"> Dev<span>Vista</span></span>
+      <p>Professional portfolio builder for modern professionals.</p>
+    </div>
+    <div class="ft-links">
+      <a href="#templates">Templates</a>
+      <a href="#features">Features</a>
+      <a href="#how">How It Works</a>
+    </div>
+    <div class="ft-icons">
+      <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="#" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+    </div>
+  </div>
+  <p class="copyright">© 2026 DevVista. Open source portfolio builder.</p>
+</footer>
+
+<!-- ═══ DATA ENTRY WIZARD ═══ -->
+<div id="wizard" class="wiz-overlay">
+  <div class="wiz-box">
+    <!-- Header -->
+    <div class="wiz-hd">
+      <div class="wiz-hd-left">
+        <span class="wiz-logo"><img src="logo.jpg" alt="DevVista" style="height:22px;width:22px;border-radius:4px;object-fit:cover;flex-shrink:0"> DevVista</span>
+        <span class="wiz-for">Building with</span>
+        <span class="wiz-tpl-badge" id="wizTplBadge">NEXUS</span>
+      </div>
+      <button class="wiz-x" onclick="closeWizard()" title="Close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="wiz-prog">
+      <div class="wiz-steps-row" id="wizStepsRow"></div>
+      <div class="wiz-track"><div class="wiz-fill" id="wizFill"></div></div>
+    </div>
+
+    <!-- Step Content (scrollable) -->
+    <div class="wiz-body" id="wizBody"></div>
+
+    <!-- Footer Actions -->
+    <div class="wiz-ft">
+      <button class="wiz-btn wiz-prev" id="wizPrev" onclick="wizNav(-1)"><i class="fas fa-arrow-left"></i> Back</button>
+      <span class="wiz-step-info" id="wizInfo"></span>
+      <button class="wiz-btn wiz-next" id="wizNext" onclick="wizNav(1)">Next <i class="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>

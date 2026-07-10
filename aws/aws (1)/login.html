@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Sign in or create a DevVista account to start building your professional portfolio in minutes.">
+<title>DevVista | Sign In</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ============================================================
+   DevVista — Auth Page (Premium Glassmorphism)
+   ============================================================ */
+:root {
+  --bg: #07101d;
+  --s: rgba(13,24,41,.92);
+  --b: rgba(255,255,255,.08);
+  --t: #f0f4f8;
+  --m: #64748b;
+  --p: #2563eb;
+  --p-glow: rgba(37,99,235,.4);
+  --r: 18px;
+  --tr: .3s cubic-bezier(.4,0,.2,1);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--t);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── Background ── */
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, #000 10%, transparent 100%);
+  pointer-events: none;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  z-index: 0;
+  animation: blobFloat 10s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.blob-1 { width: 380px; height: 380px; background: rgba(37,99,235,.3); top: -100px; left: -100px; }
+.blob-2 { width: 320px; height: 320px; background: rgba(124,58,237,.28); bottom: -70px; right: -70px; animation-delay: -5s; }
+.blob-3 { width: 220px; height: 220px; background: rgba(16,185,129,.14); top: 45%; left: 55%; animation-delay: -3s; }
+@keyframes blobFloat {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(18px,18px) scale(1.09); }
+}
+
+/* ── Container ── */
+.auth-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 460px;
+  padding: 20px;
+}
+
+/* ── Card ── */
+.auth-card {
+  background: var(--s);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--r);
+  padding: 42px 38px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.08);
+  position: relative;
+  overflow: hidden;
+  animation: cardIn .55s cubic-bezier(.17,.67,.35,1.1) both;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+/* Shimmer gradient border */
+.auth-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r);
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgba(37,99,235,.7) 0%,
+    transparent 40%,
+    rgba(124,58,237,.45) 70%,
+    transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: .75;
+}
+
+/* ── Logo Header ── */
+.logo-hdr {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.logo-hdr a {
+  font-size: 1.48rem;
+  font-weight: 800;
+  color: var(--t);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo-hdr a span { color: var(--p); }
+.logo-hdr img { height: 30px; width: 30px; border-radius: 6px; object-fit: cover; }
+.logo-tagline { font-size: .76rem; color: var(--m); margin-top: 7px; letter-spacing: .01em; }
+
+
+
+/* ── Divider ── */
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  color: var(--m);
+  font-size: .76rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.auth-divider::before, .auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,.08);
+}
+
+/* ── Mode Toggle ── */
+.auth-toggle {
+  display: flex;
+  background: rgba(0,0,0,.25);
+  border: 1px solid var(--b);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 26px;
+}
+.toggle-btn {
+  flex: 1;
+  border: none;
+  background: none;
+  color: var(--m);
+  padding: 10px;
+  font-size: .87rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: var(--tr);
+  font-family: inherit;
+}
+.toggle-btn.active {
+  background: var(--p);
+  color: #fff;
+  box-shadow: 0 4px 14px var(--p-glow);
+}
+
+/* ── Form Fields ── */
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--m);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: 8px;
+}
+.input-wrap { position: relative; }
+.input-wrap input {
+  width: 100%;
+  background: rgba(0,0,0,.2);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 9px;
+  padding: 12px 14px 12px 44px;
+  color: var(--t);
+  font-size: .9rem;
+  font-family: inherit;
+  outline: none;
+  transition: var(--tr);
+}
+.input-wrap input::placeholder { color: #3d5068; }
+.input-wrap input:focus {
+  border-color: var(--p);
+  background: rgba(0,0,0,.3);
+  box-shadow: 0 0 0 3px rgba(37,99,235,.14);
+}
+.input-wrap i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #3d5068;
+  font-size: .9rem;
+  transition: var(--tr);
+  pointer-events: none;
+}
+.input-wrap input:focus + i { color: var(--p); }
+/* Override autofill browser styling */
+.input-wrap input:-webkit-autofill,
+.input-wrap input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--t) !important;
+  -webkit-box-shadow: 0 0 0 999px #0d1829 inset !important;
+  transition: background-color 9999s;
+}
+
+
+
+/* ── Submit Button ── */
+.btn-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  padding: 13px;
+  font-size: .92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--tr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  box-shadow: 0 4px 18px var(--p-glow);
+  font-family: inherit;
+  letter-spacing: .01em;
+}
+.btn-submit:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(37,99,235,.52);
+}
+.btn-submit:active { transform: none; }
+
+/* ── Back Link ── */
+.back-link {
+  text-align: center;
+  margin-top: 24px;
+  font-size: .82rem;
+}
+.back-link a {
+  color: var(--m);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--tr);
+}
+.back-link a:hover { color: var(--t); }
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: #1e293b;
+  border: 1px solid rgba(255,255,255,.1);
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-size: .88rem;
+  font-weight: 500;
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  z-index: 1000;
+  opacity: 0;
+  transition: var(--tr);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── Form Slide Animation ── */
+.forms-outer { overflow: hidden; width: 100%; }
+.forms-wrapper {
+  display: flex;
+  width: 200%;
+  transition: transform .42s cubic-bezier(.4,0,.2,1);
+}
+.form-slide { width: 50%; transition: opacity .3s ease; }
+.auth-card.signup-active .forms-wrapper { transform: translateX(-50%); }
+.auth-card.signup-active #loginSlide { opacity: 0; pointer-events: none; }
+.auth-card:not(.signup-active) #signupSlide { opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<div class="auth-wrap">
+  <div class="auth-card" id="authCard">
+
+    <!-- Logo -->
+    <div class="logo-hdr">
+      <a href="index.html">
+        <img src="logo.jpg" alt="DevVista">
+        Dev<span>Vista</span>
+      </a>
+      <p class="logo-tagline">Build your professional portfolio in minutes.</p>
+    </div>
+
+
+
+    <!-- Sign In / Sign Up Toggle -->
+    <div class="auth-toggle">
+      <button class="toggle-btn active" id="btnLoginToggle" onclick="setMode('login')">Sign In</button>
+      <button class="toggle-btn" id="btnSignupToggle" onclick="setMode('signup')">Create Account</button>
+    </div>
+
+    <!-- Sliding Forms -->
+    <div class="forms-outer">
+      <div class="forms-wrapper">
+
+        <!-- LOGIN FORM -->
+        <div class="form-slide" id="loginSlide">
+          <form onsubmit="handleLogin(event)">
+            <div class="form-group">
+              <label for="loginEmail">Email Address</label>
+              <div class="input-wrap">
+                <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" required>
+                <i class="fas fa-envelope"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <div class="input-wrap">
+                <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" required>
+                <i class="fas fa-lock"></i>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              Sign In <i class="fas fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+
+        <!-- SIGNUP FORM -->
+        <div class="form-slide" id="signupSlide">
+          <form onsubmit="handleSignup(event)">
+            <div class="form-group">
+              <label for="signupName">Full Name</label>
+              <div class="input-wrap">
+                <input type="text" id="signupName" placeholder="John Doe" autocomplete="name" required>
+                <i class="fas fa-user"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="signupEmail">Email Address</label>
+              <div class="input-wrap">
+                <input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email" required>
+                <i class="fas fa-envelope"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="signupPassword">Password</label>
+              <div class="input-wrap">
+                <input type="password" id="signupPassword" placeholder="Minimum 8 characters" minlength="8" autocomplete="new-password" required>
+                <i class="fas fa-lock"></i>
+              </div>
+            </div>
+            <button type="submit" class="btn-submit" style="margin-top:6px">
+              Create Account <i class="fas fa-user-plus"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="back-link">
+      <a href="index.html"><i class="fas fa-arrow-left"></i> Back to DevVista Studio</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toastMsg"></div>
+
+<script>
+'use strict';
+
+// ── Redirect target ──────────────────────────────────────────────────────────
+const urlParams = new URLSearchParams(window.location.search);
+const redirect = urlParams.get('redirect') || 'index.html';
+
+
+
+// ── Toggle Mode ──────────────────────────────────────────────────────────────
+function setMode(mode) {
+  const card = document.getElementById('authCard');
+  const lt = document.getElementById('btnLoginToggle');
+  const st = document.getElementById('btnSignupToggle');
+  if (mode === 'signup') {
+    card.classList.add('signup-active');
+    st.classList.add('active');
+    lt.classList.remove('active');
+  } else {
+    card.classList.remove('signup-active');
+    lt.classList.add('active');
+    st.classList.remove('active');
+  }
+}
+
+// ── Accounts registry helpers ────────────────────────────────────────────────
+// All registered accounts are kept in localStorage under 'devvista_accounts'
+// as an object keyed by lower-cased email.  Passwords are stored as-is here
+// (frontend-only simulation); a real backend would bcrypt-hash server-side.
+function getAccounts() {
+  try { return JSON.parse(localStorage.getItem('devvista_accounts') || '{}'); }
+  catch { return {}; }
+}
+function saveAccounts(accounts) {
+  localStorage.setItem('devvista_accounts', JSON.stringify(accounts));
+}
+
+// ── Handle Sign-Up ────────────────────────────────────────────────────────────
+function handleSignup(event) {
+  event.preventDefault();
+  const name     = document.getElementById('signupName').value.trim();
+  const email    = document.getElementById('signupEmail').value.trim().toLowerCase();
+  const password = document.getElementById('signupPassword').value;
+
+  if (!name || !email || !password) {
+    toast('⚠️ Please fill in all fields.');
+    return;
+  }
+  if (password.length < 8) {
+    toast('⚠️ Password must be at least 8 characters.');
+    return;
+  }
+
+  const accounts = getAccounts();
+  if (accounts[email]) {
+    toast('⚠️ An account with this email already exists. Please sign in.');
+    return;
+  }
+
+  // Store credentials — keyed by email
+  accounts[email] = { name, email, password };
+  saveAccounts(accounts);
+
+  // Also set the active session
+  localStorage.setItem('devvista_user', JSON.stringify({ name, email, loggedIn: true, provider: 'email' }));
+  toast('🎉 Account created! Welcome, ' + name + '!');
+  setTimeout(() => window.location.href = redirect, 1100);
+}
+
+// ── Handle Login ──────────────────────────────────────────────────────────────
+function handleLogin(event) {
+  event.preventDefault();
+  const email    = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const password = document.getElementById('loginPassword').value;
+
+  if (!email || !password) {
+    toast('⚠️ Please enter your email and password.');
+    return;
+  }
+
+  const accounts = getAccounts();
+  const account  = accounts[email];
+
+  if (!account) {
+    toast('❌ No account found. Please sign up first.');
+    return;
+  }
+  if (account.password !== password) {
+    toast('❌ Incorrect password. Please try again.');
+    return;
+  }
+
+  // Credentials match — create session
+  localStorage.setItem('devvista_user', JSON.stringify({ name: account.name, email, loggedIn: true, provider: 'email' }));
+  toast('🔑 Welcome back, ' + account.name + '!');
+  setTimeout(() => window.location.href = redirect, 1100);
+}
+
+// ── Toast ────────────────────────────────────────────────────────────────────
+function toast(msg) {
+  const el = document.getElementById('toastMsg');
+  el.textContent = msg;
+  el.classList.add('on');
+  setTimeout(() => el.classList.remove('on'), 2800);
+}
+</script>
+</body>
+</html>

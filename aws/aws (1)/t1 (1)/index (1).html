@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>YOUR NAME | Cloud Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ═══ NEXUS TEMPLATE — Cloud & DevOps Professional ═══ */
+:root{--bg:#091525;--s:rgba(14,30,58,.8);--b:rgba(255,255,255,.07);
+--t:#dde6f0;--m:#64748b;--p:#2563eb;--a:#38bdf8;--r:12px;--tr:.25s ease;
+--glow:0 0 18px rgba(37,99,235,.22);}
+/* THEME VARIANTS */
+[data-th=slate]{--p:#475569;--a:#94a3b8;}
+[data-th=cobalt]{--p:#0284c7;--a:#38bdf8;--bg:#071829;}
+[data-th=indigo]{--p:#4f46e5;--a:#818cf8;}
+[data-th=teal]{--p:#0d9488;--a:#2dd4bf;--bg:#071f1e;}
+[data-th=violet]{--p:#7c3aed;--a:#a78bfa;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font-family:'Inter',sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--p);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,21,37,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--b);padding:14px 6%}
+.n-in{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto}
+.n-brand{font-size:.95rem;font-weight:800;color:var(--a);letter-spacing:.06em}
+.n-links{display:flex;gap:6px}
+.n-l{padding:6px 14px;border-radius:20px;font-size:.72rem;font-weight:600;letter-spacing:.06em;color:var(--m);border:1px solid transparent;transition:var(--tr)}
+.n-l:hover,.n-l.on{color:var(--a);border-color:rgba(37,99,235,.35);background:rgba(37,99,235,.06)}
+.n-back{font-size:.75rem;color:var(--m);border:1px solid var(--b);padding:6px 12px;border-radius:6px;transition:var(--tr)}
+.n-back:hover{color:var(--t);border-color:rgba(255,255,255,.15)}
+.n-right{display:flex;align-items:center;gap:10px}
+/* THEME SWITCHER */
+.th-toggle{width:36px;height:36px;border-radius:50%;background:var(--s);border:1px solid var(--b);color:var(--a);font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr);position:relative}
+.th-toggle:hover{border-color:var(--a)}
+.th-panel{position:absolute;top:46px;right:0;background:#0c1a2e;border:1px solid var(--b);border-radius:var(--r);padding:14px;min-width:170px;display:none;box-shadow:0 12px 30px rgba(0,0,0,.4);z-index:200}
+.th-panel.open{display:block}
+.th-ttl{font-size:.63rem;letter-spacing:.12em;color:var(--m);margin-bottom:10px;font-weight:700}
+.th-opts{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.th-o{padding:7px 10px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid var(--b);font-size:.72rem;font-weight:700;cursor:pointer;transition:var(--tr);display:flex;align-items:center;gap:7px;color:var(--t)}
+.th-o:hover,.th-o.on{border-color:var(--p);color:var(--a)}
+.th-dot{width:8px;height:8px;border-radius:50%}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:100px 6% 60px;max-width:1200px;margin:0 auto}
+.h-text .h-tag{font-family:'Fira Code',monospace;font-size:.8rem;color:var(--a);margin-bottom:14px;display:block}
+.h-name{font-size:clamp(2rem,4.5vw,3.4rem);font-weight:800;line-height:1.05;margin-bottom:10px;background:linear-gradient(135deg,var(--t) 50%,var(--a));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.tw-wrap{font-family:'Fira Code',monospace;font-size:.95rem;color:var(--m);margin-bottom:18px}
+.tw-kw{color:#7dd3fc}.tw-eq{color:var(--m)}.tw-q{color:#86efac}.tw-val{color:var(--a)}.tw-cur{animation:blink .7s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.h-bio{color:var(--m);line-height:1.75;font-size:.93rem;margin-bottom:24px;max-width:480px}
+.h-bio em{color:var(--t);font-style:normal;font-weight:600}
+.h-socials{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.soc{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:24px;border:1px solid var(--b);font-size:.75rem;font-weight:600;transition:var(--tr);background:rgba(255,255,255,.03)}
+.soc:hover{transform:translateY(-2px)}
+.soc.li:hover{border-color:#0077b5;color:#0077b5}
+.soc.gh:hover{border-color:#c9d1d9;color:#c9d1d9}
+.soc.em:hover{border-color:var(--a);color:var(--a)}
+.soc.tw:hover{border-color:#e7e9ea;color:#e7e9ea}
+.soc.ph:hover{border-color:#22c55e;color:#22c55e}
+.h-stats{display:flex;gap:14px;margin-bottom:28px;flex-wrap:wrap}
+.stat{background:var(--s);border:1px solid var(--b);border-radius:10px;padding:12px 18px;text-align:center;min-width:75px}
+.stat-n{display:block;font-size:1.5rem;font-weight:800;color:var(--a);line-height:1}
+.stat-l{font-size:.62rem;color:var(--m);font-weight:700;letter-spacing:.1em;margin-top:3px;display:block}
+.h-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:7px;font-weight:700;font-size:.8rem;transition:var(--tr);border:1px solid transparent}
+.btn-fill{background:var(--p);color:#fff;box-shadow:var(--glow)}
+.btn-fill:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(37,99,235,.4)}
+.btn-ghost{border-color:var(--b);color:var(--t)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
+
+/* PHOTO FRAME */
+.h-photo{display:flex;justify-content:center;align-items:center;position:relative}
+.photo-ring{position:absolute;border-radius:50%;border:1px solid;animation:ring 3s ease-in-out infinite}
+.r1{width:340px;height:340px;border-color:rgba(37,99,235,.2);animation-delay:0s}
+.r2{width:390px;height:390px;border-color:rgba(37,99,235,.1);animation-delay:.6s}
+@keyframes ring{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.02);opacity:.4}}
+.photo-wrap{width:260px;height:260px;border-radius:50%;border:3px solid var(--p);overflow:hidden;box-shadow:var(--glow);position:relative;z-index:2;background:var(--s)}
+.photo-wrap img{width:100%;height:100%;object-fit:cover}
+.photo-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--m)}
+.photo-ph i{font-size:3.5rem;color:var(--p);opacity:.6}
+.photo-ph span{font-size:.7rem;font-family:'Fira Code',monospace}
+.photo-badge{position:absolute;bottom:8px;right:-6px;background:linear-gradient(135deg,var(--p),var(--a));color:#fff;padding:5px 12px;border-radius:20px;font-size:.65rem;font-weight:800;z-index:3;box-shadow:var(--glow)}
+.orbit{position:absolute;z-index:3}
+.orb-i{width:36px;height:36px;border-radius:50%;background:var(--s);border:1px solid var(--b);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--a);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.ob1{top:-10px;left:50%;transform:translateX(-50%)}
+.ob2{top:20%;right:-14px}
+.ob3{bottom:20%;right:-14px}
+.ob4{bottom:-10px;left:50%;transform:translateX(-50%)}
+.ob5{bottom:20%;left:-14px}
+.ob6{top:20%;left:-14px}
+
+/* SECTIONS */
+.sec{padding:80px 6%;max-width:1200px;margin:0 auto}
+.sec-hd{text-align:center;margin-bottom:50px}
+.sec-tag{font-family:'Fira Code',monospace;font-size:.72rem;color:var(--a);letter-spacing:.15em;display:block;margin-bottom:10px}
+.sec-title{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:800;margin-bottom:12px}
+.sec-line{width:48px;height:3px;background:linear-gradient(90deg,var(--p),var(--a));margin:0 auto;border-radius:2px}
+.glass{background:var(--s);border:1px solid var(--b);border-radius:var(--r);backdrop-filter:blur(8px);transition:var(--tr)}
+.glass:hover{border-color:rgba(37,99,235,.25)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:start}
+.about-card{padding:28px}
+.about-card p{color:var(--m);line-height:1.8;font-size:.9rem;margin-bottom:14px}
+.about-card strong{color:var(--t)}
+.about-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.am{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--m)}
+.am i{color:var(--p);width:14px;font-size:.75rem}
+.tl{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:16px;padding-bottom:22px;position:relative}
+.tl-item::before{content:'';position:absolute;left:18px;top:38px;bottom:0;width:1px;background:var(--b)}
+.tl-item:last-child::before{display:none}
+.tl-dot{width:36px;height:36px;border-radius:50%;background:var(--s);border:2px solid var(--p);display:flex;align-items:center;justify-content:center;font-size:.78rem;color:var(--p);flex-shrink:0;box-shadow:var(--glow)}
+.tl-body h4{font-size:.9rem;font-weight:700;margin-bottom:3px}
+.tl-body p{font-size:.78rem;color:var(--m)}
+.tl-body span{font-family:'Fira Code',monospace;font-size:.7rem;color:var(--a)}
+
+/* SKILLS */
+.sk-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.sk-t{padding:7px 18px;border-radius:20px;background:var(--s);border:1px solid var(--b);font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--m);cursor:pointer;transition:var(--tr)}
+.sk-t.on,.sk-t:hover{border-color:var(--p);color:var(--a);background:rgba(37,99,235,.07)}
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;margin-bottom:40px}
+.sk-card{padding:18px 14px;text-align:center;border-radius:var(--r);background:var(--s);border:1px solid var(--b);transition:var(--tr);animation:fadeUp .3s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.sk-card:hover{border-color:var(--p);transform:translateY(-4px)}
+.sk-card i{font-size:1.8rem;color:var(--a);margin-bottom:9px}
+.sk-card h5{font-size:.74rem;font-weight:700;margin-bottom:7px}
+.sk-badge{display:inline-block;margin-top:6px;padding:3px 10px;border-radius:12px;font-size:.62rem;font-weight:700;font-family:'Fira Code',monospace;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:var(--a)}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px}
+.proj-card{border-radius:var(--r);border:1px solid var(--b);background:var(--s);overflow:hidden;transition:var(--tr);cursor:pointer}
+.proj-card:hover{border-color:rgba(37,99,235,.4);transform:translateY(-5px);box-shadow:0 16px 36px rgba(0,0,0,.3)}
+.proj-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;color:var(--a);position:relative;background:rgba(37,99,235,.04)}
+.proj-svcs{position:absolute;bottom:10px;left:10px;display:flex;gap:5px;flex-wrap:wrap}
+.psvc{font-size:.62rem;font-family:'Fira Code',monospace;padding:2px 8px;border-radius:10px;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.25);color:var(--a)}
+.proj-body{padding:18px}
+.proj-body h3{font-size:.98rem;font-weight:800;margin-bottom:6px}
+.proj-body p{font-size:.8rem;color:var(--m);line-height:1.6;margin-bottom:12px}
+.proj-tags{display:flex;gap:5px;flex-wrap:wrap}
+.ptag{padding:3px 9px;border-radius:10px;font-size:.65rem;font-family:'Fira Code',monospace;background:rgba(255,255,255,.04);border:1px solid var(--b);color:var(--m)}
+.proj-ft{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--b)}
+.proj-links a{width:30px;height:30px;border-radius:50%;background:var(--s);border:1px solid var(--b);display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;transition:var(--tr);margin-right:6px}
+.proj-links a:hover{border-color:var(--a);color:var(--a)}
+.live-dot{display:flex;align-items:center;gap:5px;font-size:.68rem;font-family:'Fira Code',monospace;color:var(--m)}
+.live-dot::before{content:'';width:5px;height:5px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-box{background:#0c1a30;border:1px solid var(--b);border-radius:16px;padding:32px;max-width:680px;width:100%;max-height:82vh;overflow-y:auto;position:relative}
+.modal-x{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:var(--s);border:1px solid var(--b);color:var(--m);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--tr)}
+.modal-x:hover{color:var(--t);border-color:rgba(255,255,255,.2)}
+
+/* CERTS */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.cert-card{padding:22px;border-radius:var(--r);display:flex;align-items:center;gap:18px;transition:var(--tr)}
+.cert-card:hover{border-color:rgba(37,99,235,.35);transform:translateX(5px)}
+.cert-ico{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--p),var(--a));display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:#fff;flex-shrink:0;box-shadow:var(--glow)}
+.cert-info h4{font-size:.9rem;font-weight:700;margin-bottom:3px}
+.cert-info p{font-size:.76rem;color:var(--m)}
+.cert-badge{display:inline-block;margin-top:7px;padding:3px 10px;border-radius:20px;font-size:.62rem;font-weight:700;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#22c55e}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:36px}
+.c-info{display:flex;flex-direction:column;gap:12px}
+.c-card{padding:16px;display:flex;align-items:center;gap:14px;cursor:pointer;border-radius:var(--r)}
+.c-card:hover{border-color:rgba(37,99,235,.3)}
+.c-card i{font-size:1.2rem;color:var(--p);width:20px;text-align:center}
+.c-card h4{font-size:.82rem;font-weight:700;margin-bottom:2px}
+.c-card p{font-size:.76rem;color:var(--m)}
+.c-soc{font-size:.8rem;background:rgba(37,99,235,.08);border-color:rgba(37,99,235,.2)}
+.c-soc:hover{background:rgba(37,99,235,.12)}
+.c-form{padding:28px}
+.c-form h3{font-size:1rem;font-weight:800;color:var(--a);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.c-note{font-family:'Fira Code',monospace;font-size:.7rem;color:var(--m);margin-bottom:22px}
+.c-note em{color:var(--a);font-style:normal}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--m);margin-bottom:5px}
+.fg input,.fg textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--b);border-radius:7px;padding:10px 13px;color:var(--t);font-family:'Inter',sans-serif;font-size:.87rem;transition:var(--tr);resize:none}
+.fg input:focus,.fg textarea:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.custom-ep{font-family:'Fira Code',monospace;font-size:.72rem}
+.f-status{margin-top:12px;padding:10px 14px;border-radius:7px;font-size:.82rem;display:none}
+.f-ok{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);color:#22c55e;display:block}
+.f-err{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);color:#ef4444;display:block}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(70px);background:#0c1a30;border:1px solid var(--p);border-radius:24px;padding:10px 22px;font-size:.82rem;z-index:1000;opacity:0;transition:.35s ease;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--b);padding:32px 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:.8rem;color:var(--m)}
+footer .back{display:flex;align-items:center;gap:6px;color:var(--m);transition:var(--tr)}
+footer .back:hover{color:var(--t)}
+footer .ft-soc{display:flex;gap:12px}
+footer .ft-soc a{color:var(--m);font-size:.95rem;transition:var(--tr)}
+footer .ft-soc a:hover{color:var(--a)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(18px);transition:.5s ease}
+.rv.show{opacity:1;transform:none}
+
+@media(max-width:900px){#hero{grid-template-columns:1fr;text-align:center}.h-photo{display:none}.about-grid,.contact-wrap{grid-template-columns:1fr}.h-socials,.h-cta,.h-stats{justify-content:center}}
+@media(max-width:600px){.n-links{display:none}.f-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="n-in">
+    <span class="n-brand" id="nBrand">YN.cloud</span>
+    <div class="n-links" id="nLinks">
+      <a href="#hero" class="n-l">Home</a>
+      <a href="#about" class="n-l">About</a>
+      <a href="#skills" class="n-l">Skills</a>
+      <a href="#projects" class="n-l">Projects</a>
+      <a href="#certs" class="n-l">Certs</a>
+      <a href="#contact" class="n-l">Contact</a>
+    </div>
+    <div class="n-right">
+      <div style="position:relative">
+        <button class="th-toggle" id="thBtn" title="Theme"><i class="fas fa-sliders-h"></i></button>
+        <div class="th-panel" id="thPanel">
+          <div class="th-ttl">SELECT THEME</div>
+          <div class="th-opts" id="thOpts"></div>
+        </div>
+      </div>
+      <a href="../" class="n-back"><i class="fas fa-arrow-left"></i> Studio</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-text">
+    <span class="h-tag">// WELCOME_TO_MY_PORTFOLIO</span>
+    <h1 class="h-name" id="hName">YOUR NAME</h1>
+    <div class="tw-wrap">
+      <span class="tw-kw">const</span> role <span class="tw-eq">= </span><span class="tw-q">"</span><span id="tw"></span><span class="tw-cur">|</span><span class="tw-q">"</span>
+    </div>
+    <p class="h-bio">Building <em>scalable cloud-native systems</em> and <em>intelligent software solutions</em>. Specializing in cloud infrastructure, containerization, infrastructure-as-code, and high-performance applications.</p>
+    <div class="h-stats">
+      <div class="stat"><span class="stat-n" data-c="5">0</span><span class="stat-l">YEARS EXP</span></div>
+      <div class="stat"><span class="stat-n" data-c="20">0</span><span class="stat-l">PROJECTS</span></div>
+      <div class="stat"><span class="stat-n" data-c="3">0</span><span class="stat-l">CERTIFICATIONS</span></div>
+    </div>
+    <div class="h-socials">
+      <a href="#" class="soc li"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+      <a href="#" class="soc gh"><i class="fab fa-github"></i><span>GitHub</span></a>
+      <a href="#" class="soc em"><i class="fas fa-envelope"></i><span>Email</span></a>
+      <a href="#" class="soc tw"><i class="fab fa-x-twitter"></i><span>Twitter</span></a>
+      <a href="#" class="soc ph"><i class="fas fa-phone"></i><span>Call</span></a>
+    </div>
+    <div class="h-cta">
+      <a href="#contact" class="btn btn-fill"><i class="fas fa-paper-plane"></i> Connect</a>
+      <a href="#projects" class="btn btn-ghost"><i class="fas fa-rocket"></i> View Work</a>
+    </div>
+  </div>
+  <div class="h-photo">
+    <div class="photo-ring r1"></div>
+    <div class="photo-ring r2"></div>
+    <div class="photo-wrap">
+      <!-- Replace div below with: <img src="your-photo.jpg" alt="Your Name"> -->
+      <div class="photo-ph"><i class="fas fa-user-tie"></i><span>// add photo</span></div>
+    </div>
+    <div class="photo-badge"><i class="fas fa-code"></i> Dev</div>
+    <div class="orbit ob1"><div class="orb-i"><i class="fab fa-python"></i></div></div>
+    <div class="orbit ob2"><div class="orb-i"><i class="fab fa-react"></i></div></div>
+    <div class="orbit ob3"><div class="orb-i"><i class="fab fa-docker"></i></div></div>
+    <div class="orbit ob4"><div class="orb-i"><i class="fab fa-github"></i></div></div>
+    <div class="orbit ob5"><div class="orb-i"><i class="fab fa-js"></i></div></div>
+    <div class="orbit ob6"><div class="orb-i"><i class="fas fa-database"></i></div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="sec-hd rv"><span class="sec-tag">01 // PROFILE</span><h2 class="sec-title">About Me</h2><div class="sec-line"></div></div>
+  <div class="about-grid">
+    <div class="glass about-card rv">
+      <p id="aboutBioBlock">I'm a <strong>developer and technologist</strong> passionate about building systems that scale. I bridge the gap between great user experience and solid engineering &mdash; from clean application code to robust backend infrastructure.</p>
+      <p>I believe in <strong>automation-first</strong> thinking, <strong>clean architecture</strong>, and shipping software that works reliably. Always learning, always building.</p>
+      <div class="about-meta">
+        <div class="am"><i class="fas fa-map-marker-alt"></i> Your City, Country</div>
+        <div class="am"><i class="fas fa-graduation-cap"></i> B.Tech / B.Sc. CS</div>
+        <div class="am"><i class="fas fa-briefcase"></i> Open to Opportunities</div>
+        <div class="am"><i class="fas fa-code"></i> Full-Stack Development</div>
+      </div>
+    </div>
+    <div class="tl rv" id="expTimeline">
+      <div class="tl-item"><div class="tl-dot"><i class="fas fa-briefcase"></i></div><div class="tl-body"><h4>Your Role Here</h4><p>Your Company Name</p><span>Year &ndash; Present</span></div></div>
+      <div class="tl-item"><div class="tl-dot"><i class="fas fa-code"></i></div><div class="tl-body"><h4>Previous Role</h4><p>Previous Company</p><span>Year &ndash; Year</span></div></div>
+      <div class="tl-item"><div class="tl-dot"><i class="fas fa-graduation-cap"></i></div><div class="tl-body"><h4>B.Tech / B.Sc. &mdash; Computer Science</h4><p>Your University</p><span>Year &ndash; Year</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec">
+  <div class="sec-hd rv"><span class="sec-tag">02 // CAPABILITIES</span><h2 class="sec-title">Skills & Technologies</h2><div class="sec-line"></div></div>
+  <div class="sk-tabs" id="skTabs"></div>
+  <div class="sk-grid" id="skGrid"></div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec">
+  <div class="sec-hd rv"><span class="sec-tag">03 // DEPLOYMENTS</span><h2 class="sec-title">Projects</h2><div class="sec-line"></div></div>
+  <div class="proj-grid" id="projGrid"></div>
+</section>
+
+<!-- CERTS -->
+<section id="certs" class="sec">
+  <div class="sec-hd rv"><span class="sec-tag">04 // CREDENTIALS</span><h2 class="sec-title">Certifications</h2><div class="sec-line"></div></div>
+  <div class="cert-grid" id="certGrid"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="sec-hd rv"><span class="sec-tag">05 // HANDSHAKE</span><h2 class="sec-title">Get In Touch</h2><div class="sec-line"></div></div>
+  <div class="contact-wrap">
+    <div class="c-info">
+      <div class="c-card glass" onclick="copy('your@email.com')"><i class="fas fa-envelope"></i><div><h4>Email</h4><p>your@email.com</p></div></div>
+      <div class="c-card glass" onclick="copy('+1 000 000 0000')"><i class="fas fa-phone"></i><div><h4>Phone</h4><p>+1 000 000 0000</p></div></div>
+      <div class="c-card glass"><i class="fas fa-map-marker-alt"></i><div><h4>Location</h4><p>Your City, Country</p></div></div>
+      <a href="#" class="c-card glass c-soc"><i class="fab fa-linkedin-in"></i><div><h4>LinkedIn</h4><p>linkedin.com/in/yourprofile</p></div></a>
+      <a href="#" class="c-card glass c-soc"><i class="fab fa-github"></i><div><h4>GitHub</h4><p>github.com/yourprofile</p></div></a>
+    </div>
+    <form class="glass c-form" id="cForm" onsubmit="sendMsg(event)">
+      <h3><i class="fas fa-paper-plane"></i> Send a Message</h3>
+      <p class="c-note">Fill in the form to get in touch</p>
+      <div class="f-row">
+        <div class="fg"><label>NAME</label><input id="fName" placeholder="Your full name" required></div>
+        <div class="fg"><label>EMAIL</label><input type="email" id="fEmail" placeholder="your@email.com" required></div>
+      </div>
+      <div class="fg"><label>SUBJECT</label><input id="fSubj" placeholder="What's this about?"></div>
+      <div class="fg"><label>MESSAGE</label><textarea id="fMsg" rows="4" placeholder="Your message..." required></textarea></div>
+      <div class="fg"><label>ENDPOINT (optional)</label><input class="custom-ep" id="fEp" placeholder="https://your-api.com/contact"></div>
+      <button type="submit" class="btn btn-fill" id="fBtn" style="width:100%;justify-content:center"><i class="fas fa-paper-plane"></i> SEND MESSAGE</button>
+      <div id="fStatus" class="f-status"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <a href="../" class="back"><i class="fas fa-arrow-left"></i> Back to DevVista</a>
+  <span id="ftCopy">&copy; 2026 Developer Portfolio &middot; Built with DevVista</span>
+  <div class="ft-soc">
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fas fa-envelope"></i></a>
+  </div>
+</footer>
+
+<div class="modal" id="modal" onclick="closeModal()"><div class="modal-box" onclick="event.stopPropagation()"><button class="modal-x" onclick="closeModal()"><i class="fas fa-times"></i></button><div id="mContent"></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+// ── DevVista: read wizard data ──────────────────────
+const _u=(()=>{try{return JSON.parse(localStorage.getItem('devvista_data')||'{}')}catch{return{}}})();
+const _icon=n=>{n=(n||'').toLowerCase();return n.includes('python')?'fab fa-python':n.includes('javascript')||n==='js'?'fab fa-js':n.includes('react')||n.includes('next')?'fab fa-react':n.includes('vue')?'fab fa-vuejs':n.includes('aws')||n.includes('amazon')?'fab fa-aws':n.includes('docker')?'fab fa-docker':n.includes('node')?'fab fa-node-js':n.includes('linux')?'fab fa-linux':n.includes('kubernetes')||n==='k8s'?'fas fa-dharmachakra':n.includes('terraform')?'fas fa-code-branch':n.includes('git')?'fab fa-github':'fas fa-code'};
+const _cat=n=>{n=(n||'').toLowerCase();if(['aws','lambda','s3','ec2','cloud','cloudfront','dynamodb','rds'].some(k=>n.includes(k)))return'cloud';if(['docker','terraform','kubernetes','linux','git','bash'].some(k=>n.includes(k)))return'tools';return'dev'};
+const _lvl=v=>{
+  if(typeof v==='number'){
+    if(v<50)return 'Beginner';
+    if(v<=80)return 'Intermediate';
+    return 'Advanced';
+  }
+  return v||'Intermediate';
+};
+const D={
+  roles:['Cloud Architect','DevOps Engineer','Backend Developer','Systems Engineer','Full-Stack Engineer'],
+  themes:[
+    {id:'default',label:'Navy',dot:'#2563eb'},{id:'cobalt',label:'Cobalt',dot:'#0284c7'},
+    {id:'indigo',label:'Indigo',dot:'#4f46e5'},{id:'teal',label:'Teal',dot:'#0d9488'},
+    {id:'violet',label:'Violet',dot:'#7c3aed'},{id:'slate',label:'Slate',dot:'#475569'}
+  ],
+  skills:(_u.skills&&_u.skills.length)?_u.skills.map(s=>({n:s.name,i:_icon(s.name),p:_lvl(s.level),c:_cat(s.name)})):[],
+  projects:(_u.projects&&_u.projects.length)?_u.projects.map(p=>({t:p.name,i:'fas fa-rocket',d:p.desc||'A great project.',tags:p.tags||[],arch:p.tags?p.tags.slice(0,3):[],full:p.desc||'Details coming soon.',url:p.url||'#'})):[],
+  certs:(_u.certifications&&_u.certifications.length)?_u.certifications.map(c=>({n:c.name,i:'fas fa-certificate',y:c.year||'',org:c.issuer||''})):[]
+};
+
+// Typewriter
+(function tw(){
+  const el=document.getElementById('tw');
+  let ri=0,ci=0,d=1;
+  function type(){
+    const r=D.roles[ri];
+    if(d===1){el.textContent=r.slice(0,++ci);if(ci>=r.length){d=-1;setTimeout(type,1800);return}}
+    else{el.textContent=r.slice(0,--ci);if(ci<=0){d=1;ri=(ri+1)%D.roles.length;setTimeout(type,300);return}}
+    setTimeout(type,d===1?72:42);
+  }
+  type();
+})();
+
+// Themes
+const savedTh=localStorage.getItem('nx_th')||'default';
+const applyTh=t=>{document.body.setAttribute('data-th',t==='default'?'':t);localStorage.setItem('nx_th',t);document.querySelectorAll('.th-o').forEach(b=>b.classList.toggle('on',b.dataset.t===t))};
+document.getElementById('thOpts').innerHTML=D.themes.map(t=>`<button class="th-o${t.id===savedTh?' on':''}" data-t="${t.id}" onclick="applyTh('${t.id}')"><span class="th-dot" style="background:${t.dot}"></span>${t.label}</button>`).join('');
+applyTh(savedTh);
+document.getElementById('thBtn').onclick=e=>{e.stopPropagation();document.getElementById('thPanel').classList.toggle('open')};
+document.addEventListener('click',()=>document.getElementById('thPanel').classList.remove('open'));
+
+// Skill tabs
+const CATS=['all','cloud','dev','tools'];
+const renderSk=cat=>{
+  const f=cat==='all'?D.skills:D.skills.filter(s=>s.c===cat);
+  document.getElementById('skGrid').innerHTML=f.map((s,i)=>`<div class="sk-card rv" style="animation-delay:${i*.05}s"><i class="${s.i}"></i><h5>${s.n}</h5></div>`).join('');
+};
+document.getElementById('skTabs').innerHTML=CATS.map(c=>`<button class="sk-t${c==='all'?' on':''}" onclick="setSk(this,'${c}')">${c.toUpperCase()}</button>`).join('');
+window.setSk=(btn,c)=>{document.querySelectorAll('.sk-t').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderSk(c)};
+renderSk('all');
+
+// Projects — show empty state if none
+if(D.projects.length){
+  document.getElementById('projGrid').innerHTML=D.projects.map(p=>`
+<div class="proj-card rv" onclick="openModal('${p.t.replace(/'/g,"\\'")}')">
+  <div class="proj-thumb"><i class="${p.i}"></i><div class="proj-svcs">${p.arch.map(s=>`<span class="psvc">${s}</span>`).join('')}</div></div>
+  <div class="proj-body"><h3>${p.t}</h3><p>${p.d}</p><div class="proj-tags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div></div>
+  <div class="proj-ft"><div class="proj-links">${p.url&&p.url!=='#'?`<a href="${p.url}" onclick="event.stopPropagation()" target="_blank"><i class="fas fa-external-link-alt"></i></a>`:''}</div><span class="live-dot">LIVE</span></div>
+</div>`).join('');
+}else{
+  document.getElementById('projGrid').style.display='block';
+  document.getElementById('projGrid').innerHTML='<div style="grid-column:1/-1;text-align:center;padding:50px 20px;color:var(--m)"><i class="fas fa-code-branch" style="font-size:2.5rem;color:var(--p);margin-bottom:12px;display:block"></i><span style="font-family:Fira Code,monospace;font-size:.85rem">// No projects added yet.<br>Go back to DevVista Studio to add your projects.</span></div>';
+}
+
+// Modal
+window.openModal=t=>{
+  const p=D.projects.find(x=>x.t===t);
+  if(!p)return;
+  const arch=p.arch.map((s,i)=>`<div style="display:flex;align-items:center;gap:8px">${i?'<div style="width:30px;height:1px;background:var(--p);flex-shrink:0"></div>':''}<div style="background:rgba(37,99,235,.12);border:1px solid rgba(37,99,235,.25);border-radius:6px;padding:6px 12px;font-size:.72rem;font-family:Fira Code,monospace;color:var(--a);white-space:nowrap">${s}</div></div>`).join('');
+  document.getElementById('mContent').innerHTML=`<h2 style="font-size:1.3rem;font-weight:800;color:var(--a);margin-bottom:8px">${p.t}</h2><p style="color:var(--m);font-size:.87rem;line-height:1.7;margin-bottom:18px">${p.full}</p><div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:18px">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div><div style="font-size:.7rem;letter-spacing:.1em;color:var(--m);margin-bottom:10px;font-family:Fira Code,monospace">SYSTEM ARCHITECTURE</div><div style="background:rgba(0,0,0,.3);border-radius:8px;padding:16px;display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-bottom:18px">${arch}</div><div style="display:flex;gap:10px"><a href="${p.gh}" target="_blank" class="btn btn-ghost"><i class="fab fa-github"></i> GitHub</a><a href="${p.live}" target="_blank" class="btn btn-fill"><i class="fas fa-external-link-alt"></i> Live Demo</a></div>`;
+  document.getElementById('modal').classList.add('open');
+};
+window.closeModal=()=>document.getElementById('modal').classList.remove('open');
+
+// Certs — show empty state if none
+if(D.certs.length){
+  document.getElementById('certGrid').innerHTML=D.certs.map(c=>`<div class="cert-card glass rv"><div class="cert-ico"><i class="${c.i}"></i></div><div class="cert-info"><h4>${c.n}</h4><p>${c.org}</p><span class="cert-badge">${c.y?c.y+' · ':''}VERIFIED</span></div></div>`).join('');
+}else{
+  document.getElementById('certGrid').innerHTML='<div style="text-align:center;padding:30px;color:var(--m)"><i class="fas fa-certificate" style="font-size:2rem;color:var(--p);margin-bottom:10px;display:block"></i><span style="font-family:Fira Code,monospace;font-size:.82rem">// No certifications added yet.</span></div>';
+}
+
+// Contact form
+window.sendMsg=async e=>{
+  e.preventDefault();
+  const btn=document.getElementById('fBtn'),st=document.getElementById('fStatus');
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> SENDING...';btn.disabled=true;
+  st.className='f-status';
+  const ep=document.getElementById('fEp').value.trim();
+  const body={name:document.getElementById('fName').value,email:document.getElementById('fEmail').value,subject:document.getElementById('fSubj').value,message:document.getElementById('fMsg').value};
+  try{
+    if(ep){const r=await fetch(ep,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});if(!r.ok)throw new Error('HTTP '+r.status)}
+    else await new Promise(r=>setTimeout(r,1600));
+    st.textContent='✅ Message sent! '+(ep?'':'(Configure custom endpoint to receive emails.)');
+    st.className='f-status f-ok';document.getElementById('cForm').reset();
+  }catch(err){st.textContent='❌ '+err.message;st.className='f-status f-err';}
+  finally{btn.innerHTML='<i class="fas fa-paper-plane"></i> SEND MESSAGE';btn.disabled=false;}
+};
+
+// Copy to clipboard
+window.copy=t=>navigator.clipboard.writeText(t).then(()=>toast('Copied: '+t));
+
+// Toast
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2600);}
+
+// Counter animation
+const cObs=new IntersectionObserver(entries=>entries.forEach(e=>{
+  if(e.isIntersecting&&!e.target.dataset.done){e.target.dataset.done=1;
+  const target=+e.target.dataset.c,step=target/40;let v=0;
+  const iv=setInterval(()=>{v=Math.min(v+step,target);e.target.textContent=Number.isInteger(target)?Math.round(v):v.toFixed(1);if(v>=target)clearInterval(iv)},40);}
+}),{threshold:.5});
+document.querySelectorAll('.stat-n').forEach(el=>cObs.observe(el));
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// Active nav
+const secs=[...document.querySelectorAll('section[id]')];
+const links=[...document.querySelectorAll('.n-l')];
+window.addEventListener('scroll',()=>{
+  const cur=secs.filter(s=>s.offsetTop-120<=scrollY).pop();
+  links.forEach(l=>l.classList.toggle('on',cur&&l.getAttribute('href')==='#'+cur.id));
+},{passive:true});
+
+// ── DevVista: patch DOM with user data ──────────────
+(function patchDV(){
+  const u=_u;
+  if(!u||!Object.keys(u).length)return;
+  const setText=(id,v)=>{const e=document.getElementById(id);if(e&&v)e.textContent=v};
+  // Name & title
+  if(u.name){
+    setText('hName',u.name);
+    document.title=u.name+' | Developer Portfolio';
+    const ft=document.getElementById('ftCopy');if(ft)ft.textContent='\u00a9 2026 '+u.name+' \u00b7 Built with DevVista';
+    const nb=document.getElementById('nBrand');
+    if(nb)nb.innerHTML='<img src="../logo.jpg" alt="DevVista" style="height:22px;width:22px;border-radius:4px;object-fit:cover;vertical-align:middle;margin-right:6px">DevVista';
+  }
+  if(u.title){document.querySelectorAll('.h-tag').forEach(e=>e.textContent='// '+u.title.toUpperCase().replace(/ /g,'_'));}
+  // Bio — replace text content
+  if(u.bio){document.querySelectorAll('.h-bio').forEach(e=>e.textContent=u.bio);}
+  // About meta — patch each .am div's last text node
+  const ams=document.querySelectorAll('.about-meta .am');
+  if(u.location&&ams[0]){
+    // Replace text nodes only (preserve icon)
+    ams[0].childNodes.forEach(n=>{if(n.nodeType===3&&n.textContent.trim())n.textContent=' '+u.location;});
+  }
+  if(u.available!==undefined&&ams[2]){
+    ams[2].childNodes.forEach(n=>{if(n.nodeType===3&&n.textContent.trim())n.textContent=' '+(u.available?'Open to Opportunities':'Not Currently Available');});
+  }
+  // Contact cards — use safe selectors
+  const cc=document.querySelectorAll('#contact .c-card');
+  if(cc[0]&&u.email){const p=cc[0].querySelector('p');if(p)p.textContent=u.email;cc[0].setAttribute('onclick','copy("'+u.email+'")');}
+  if(cc[1]&&u.phone){const p=cc[1].querySelector('p');if(p)p.textContent=u.phone;cc[1].setAttribute('onclick','copy("'+u.phone+'")');}
+  if(cc[2]&&u.location){const p=cc[2].querySelector('p');if(p)p.textContent=u.location;}
+  // Social links in contact
+  if(u.linkedin){const el=document.querySelector('#contact a.c-soc');if(el){el.href='https://'+u.linkedin.replace(/^https?:\/\//,'');const p=el.querySelector('p');if(p)p.textContent=u.linkedin.replace(/^https?:\/\//,'');}}
+  if(u.github){const el=document.querySelectorAll('#contact a.c-soc')[1];if(el){el.href='https://'+u.github.replace(/^https?:\/\//,'');const p=el.querySelector('p');if(p)p.textContent=u.github.replace(/^https?:\/\//,'');}}
+  // Social icons in hero
+  if(u.linkedin)document.querySelectorAll('.soc.li').forEach(a=>a.href='https://'+u.linkedin.replace(/^https?:\/\//,''));
+  if(u.github)document.querySelectorAll('.soc.gh').forEach(a=>a.href='https://'+u.github.replace(/^https?:\/\//,''));
+  if(u.email)document.querySelectorAll('.soc.em').forEach(a=>a.href='mailto:'+u.email);
+  if(u.twitter)document.querySelectorAll('.soc.tw').forEach(a=>a.href='https://twitter.com/'+u.twitter.replace('@',''));
+  // Bio block in about section
+  if(u.bio){const bb=document.getElementById('aboutBioBlock');if(bb)bb.innerHTML='<strong>'+u.name+'</strong> &mdash; '+u.bio;}
+  // Experience timeline
+  if(u.experience&&u.experience.length){
+    const tl=document.getElementById('expTimeline');
+    if(tl)tl.innerHTML=u.experience.map(e=>'<div class="tl-item"><div class="tl-dot"><i class="fas fa-briefcase"></i></div><div class="tl-body"><h4>'+(e.role||'')+'</h4><p>'+(e.company||'')+'</p><span>'+(e.period||'')+'</span></div></div>').join('');
+  }
+  // Footer social icons
+  document.querySelectorAll('footer .ft-soc a').forEach(a=>{
+    const icon=a.querySelector('i');if(!icon)return;
+    if(icon.classList.contains('fa-linkedin-in')&&u.linkedin)a.href='https://'+u.linkedin.replace(/^https?:\/\//,'');
+    if(icon.classList.contains('fa-github')&&u.github)a.href='https://'+u.github.replace(/^https?:\/\//,'');
+    if(icon.classList.contains('fa-envelope')&&u.email)a.href='mailto:'+u.email;
+  });
+})();
+</script>
+</body>
+</html>
