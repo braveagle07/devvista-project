@@ -1,5 +1,5 @@
 # devvista-project
-# DevVista 🚀
+# DevVista -portfolio generator
 
 A professional portfolio builder web app — pick a template, fill in your details, and download your portfolio in minutes. Deployed on AWS using a fully serverless architecture.
 
@@ -106,10 +106,11 @@ const API_URL = 'YOUR_API_GATEWAY_URL';
 
 ## Made by
 
-**Vasanth Sessetti** — B.Tech CSE
+**Vasanth Sessetti** and team — B.Tech CSE
 
 - GitHub: [github.com/vasanth-sessetti](https://github.com/vasanth-sessetti)
 
 ---
 
 > Built as part of AWS Cloud Deployment coursework · 2026
+> hope this helps 
