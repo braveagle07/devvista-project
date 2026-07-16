@@ -114,3 +114,4 @@ const API_URL = 'YOUR_API_GATEWAY_URL';
 
 > Built as part of AWS Cloud Deployment coursework · 2026
 > mail me for any queries -vasanthsessetti@gmail.com
+will updatethe project in coming days
