@@ -106,7 +106,7 @@ const API_URL = 'YOUR_API_GATEWAY_URL';
 
 ## Made by
 
-**Vasanth Sessetti** and team — B.Tech CSE
+**Jatla Anusha ** and team — B.Tech AI
 
 - GitHub: [github.com/vasanth-sessetti](https://github.com/vasanth-sessetti)
 
