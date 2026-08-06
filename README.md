@@ -116,4 +116,4 @@ const API_URL = 'YOUR_API_GATEWAY_URL';
 > mail me for any queries -vasanthsessetti@gmail.com
 will update the project with more templates..
 > uploaded document about our project details
-> will be updated within few days 
+> live website currently doesnt work will update within few days
