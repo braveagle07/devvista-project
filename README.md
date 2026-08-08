@@ -101,6 +101,7 @@ const API_URL = 'YOUR_API_GATEWAY_URL';
 4. Create API Gateway REST API → connect to Lambda
 5. Update `API_URL` in `login.html` with your invoke URL
 6. Re-upload `login.html` to S3
+7. ping my mail for any queries
 
 ---
 
