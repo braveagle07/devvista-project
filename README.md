@@ -115,6 +115,6 @@ const API_URL = 'YOUR_API_GATEWAY_URL';
 
 > Built as part of AWS Cloud Deployment coursework · 2026
 > mail me for any queries -vasanthsessetti@gmail.com
-> share your template ideas with me
-> uploaded document about our project details
-> live website currently isnt working will update soon
+> share if you have any creative template ideas with me
+> uploaded document about our project details. 
+
